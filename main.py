@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template ,url_for
 
 app=Flask(__name__)
 lst=['meow','gaff','some']
@@ -11,6 +11,9 @@ def index():
 def about():
     return render_template('about.html',menu=lst)
 
+@app.route('/profile/<username>')
+def profile(username):
+    return f'Пользователь {username}'
 
 if __name__=='__main__':
     app.run(debug=True)
